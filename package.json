@@ -1,0 +1,24 @@
+{
+  "name": "rram.sexy",
+  "version": "0.0.0",
+  "description": "Ricky needs to move to SLC",
+  "main": "index.html",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/btholt/rram.sexy.git"
+  },
+  "author": "Brian Holt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/btholt/rram.sexy/issues"
+  },
+  "homepage": "https://github.com/btholt/rram.sexy",
+  "devDependencies": {
+    "gulp": "~3.6.2",
+    "gulp-react": "~0.3.2",
+    "gulp-sass": "~0.7.1"
+  }
+}
