@@ -20,7 +20,8 @@
     "gulp": "~3.6.2",
     "gulp-react": "~0.3.2",
     "gulp-sass": "~0.7.1",
-    "gulp-imagemin": "~0.4.0"
+    "gulp-imagemin": "~0.4.0",
+    "gulp-newer": "~0.3.0"
   },
   "dependencies": {
     "connect": "~2.14.5"

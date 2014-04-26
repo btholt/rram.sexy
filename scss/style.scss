@@ -22,6 +22,34 @@ html {
   height: 100%;
 }
 
+.arrow-link {
+  color: #333;
+  text-decoration: none;
+}
+
+.arrow-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  opacity: .6;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.arrow-inner {
+  position: relative;
+  left: -50%;
+}
+
+.arrow-title {
+  background-color: #bbb;
+  padding: 4px;
+  border-radius: 5px;
+  color: #fafafa;
+}
+
 body {
   font-family: 'Oxygen', 'sans-serif';
   height: 100%;
@@ -39,4 +67,8 @@ body {
 
 .home-img {
   display: block;
+}
+
+.arrow-back {
+  color: #bbb;
 }
