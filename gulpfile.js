@@ -12,13 +12,13 @@ var paths = {
 gulp.task('jsx', function() {
   return gulp.src(paths.jsx)
     .pipe(react())
-    .pipe(gulp.dest('js'));
+    .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('scss', function () {
   return gulp.src(paths.scss)
     .pipe(sass({sourcemap: true}))
-    .pipe(gulp.dest('css'));
+    .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('watch', function() {
@@ -30,5 +30,5 @@ gulp.task('watch', function() {
 gulp.task('image', function () {
   return gulp.src(paths.img)
     .pipe(imagemin({pngquant: true}))
-    .pipe(gulp.dest('img-optim'));
+    .pipe(gulp.dest('dist/img-optim'));
 });
