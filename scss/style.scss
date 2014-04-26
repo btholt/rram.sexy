@@ -1,7 +1,42 @@
-body {
-  background-color: red;
+@import "reset";
+@import "fonts";
 
-  p {
-    background-color: green;
-  }
+.home-back {
+  position: absolute;
+  background-image: url(../img-optim/slc.jpg);
+  background-size: cover;
+  background-position: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  font-family: 'Oxygen', 'sans-serif';
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.home-h {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2%;
+}
+
+.home-img {
+  display: block;
 }
