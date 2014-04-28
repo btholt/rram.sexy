@@ -8,7 +8,7 @@ var Arrow = React.createClass({
     /* jshint ignore:start */
     return (
       <div className={containerClasses}>
-        <a onClick={this.handleClick} className="arrow-link" href={this.props.link}>
+        <a onClick={this.handleClick} className="arrow-link" href={this.props.model.get('link')}>
           <div className="arrow-inner">
             <div className="arrow-stack">
               <span className="fa-stack fa-lg">
@@ -17,7 +17,7 @@ var Arrow = React.createClass({
               </span>
             </div>
             <p className="arrow-title">
-              {this.props.title}
+              {this.props.model.get('title')}
             </p>
           </div>
         </a>
@@ -30,12 +30,25 @@ var Arrow = React.createClass({
 var ArrowGroup = React.createClass({
   render: function() {
     /* jshint ignore:start */
+    var up, left, right, down;
+    if(this.props.models.get('up')) {
+      up = <Arrow direction="up" model={this.props.models.get('up')} />
+    }
+    if(this.props.models.get('left')) {
+      left = <Arrow direction="left" model={this.props.models.get('left')} />
+    }
+    if(this.props.models.get('down')) {
+      down = <Arrow direction="down" model={this.props.models.get('down')} />
+    }
+    if(this.props.models.get('right')) {
+      right = <Arrow direction="right" model={this.props.models.get('right')} />
+    }
     return (
       <div>
-        <Arrow link="#rg" direction="up" title="redditgifts" />
-        <Arrow link="#nyc" direction="left" title="NYC" />
-        <Arrow link="#slc" direction="right" title="SLC" />
-        <Arrow link="#office" direction="down" title="SLC Office" />
+        {up}
+        {left}
+        {right}
+        {down}
       </div>
     );
     /* jshint ignore:end */

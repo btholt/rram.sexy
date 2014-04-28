@@ -23,14 +23,14 @@ gulp.task('lint', function() {
 
 gulp.task('jsx', function() {
   return gulp.src(paths.jsx)
-    .pipe(newer(paths.js))
+    // .pipe(newer(paths.js))
     .pipe(react())
     .pipe(gulp.dest(paths.js));
 });
 
 gulp.task('scss', function () {
   return gulp.src(paths.scss)
-    .pipe(newer(paths.css))
+    // .pipe(newer(paths.css))
     .pipe(sass({sourcemap: true}))
     .pipe(gulp.dest(paths.css));
 });

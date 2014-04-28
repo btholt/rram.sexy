@@ -9,7 +9,7 @@ var Arrow = React.createClass({displayName: 'Arrow',
     /* jshint ignore:start */
     return (
       React.DOM.div( {className:containerClasses}, 
-        React.DOM.a( {onClick:this.handleClick, className:"arrow-link", href:this.props.link}, 
+        React.DOM.a( {onClick:this.handleClick, className:"arrow-link", href:this.props.model.get('link')}, 
           React.DOM.div( {className:"arrow-inner"}, 
             React.DOM.div( {className:"arrow-stack"}, 
               React.DOM.span( {className:"fa-stack fa-lg"}, 
@@ -18,7 +18,7 @@ var Arrow = React.createClass({displayName: 'Arrow',
               )
             ),
             React.DOM.p( {className:"arrow-title"}, 
-              this.props.title
+              this.props.model.get('title')
             )
           )
         )
@@ -31,12 +31,25 @@ var Arrow = React.createClass({displayName: 'Arrow',
 var ArrowGroup = React.createClass({displayName: 'ArrowGroup',
   render: function() {
     /* jshint ignore:start */
+    var up, left, right, down;
+    if(this.props.models.get('up')) {
+      up = Arrow( {direction:"up", model:this.props.models.get('up')} )
+    }
+    if(this.props.models.get('left')) {
+      left = Arrow( {direction:"left", model:this.props.models.get('left')} )
+    }
+    if(this.props.models.get('down')) {
+      down = Arrow( {direction:"down", model:this.props.models.get('down')} )
+    }
+    if(this.props.models.get('right')) {
+      right = Arrow( {direction:"right", model:this.props.models.get('right')} )
+    }
     return (
       React.DOM.div(null, 
-        Arrow( {link:"#rg", direction:"up", title:"redditgifts"} ),
-        Arrow( {link:"#nyc", direction:"left", title:"NYC"} ),
-        Arrow( {link:"#slc", direction:"right", title:"SLC"} ),
-        Arrow( {link:"#office", direction:"down", title:"SLC Office"} )
+        up,
+        left,
+        right,
+        down
       )
     );
     /* jshint ignore:end */
