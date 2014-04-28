@@ -27,22 +27,6 @@ html {
   text-decoration: none;
 }
 
-.arrow-container {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  opacity: .6;
-  text-align: center;
-  &:hover {
-    opacity: 1;
-  }
-}
-
-.arrow-inner {
-  position: relative;
-  left: -50%;
-}
-
 .arrow-title {
   background-color: #bbb;
   padding: 4px;
@@ -71,4 +55,42 @@ body {
 
 .arrow-back {
   color: #bbb;
+}
+
+.arrow-container {
+  position: absolute;
+  opacity: .6;
+  text-align: center;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+%adjust-postion-arrow {
+  .arrow-inner {
+    position: relative;
+    left: -50%;
+  }
+}
+
+.arrow-container-up {
+  @extend %adjust-postion-arrow;
+  top: 10px;
+  left: 50%;
+}
+
+.arrow-container-down {
+  @extend %adjust-postion-arrow;
+  bottom: 10px;
+  left: 50%;
+}
+
+.arrow-container-left {
+  top: 50%;
+  left: 10px;
+}
+
+.arrow-container-right {
+  top: 50%;
+  right: 10px;
 }

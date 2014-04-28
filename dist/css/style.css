@@ -70,19 +70,6 @@ html {
   color: #333;
   text-decoration: none; }
 
-.arrow-container {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  opacity: 0.6;
-  text-align: center; }
-  .arrow-container:hover {
-    opacity: 1; }
-
-.arrow-inner {
-  position: relative;
-  left: -50%; }
-
 .arrow-title {
   background-color: #bbb;
   padding: 4px;
@@ -107,3 +94,30 @@ body {
 
 .arrow-back {
   color: #bbb; }
+
+.arrow-container {
+  position: absolute;
+  opacity: 0.6;
+  text-align: center; }
+  .arrow-container:hover {
+    opacity: 1; }
+
+.arrow-container-up .arrow-inner, .arrow-container-down .arrow-inner {
+  position: relative;
+  left: -50%; }
+
+.arrow-container-up {
+  top: 10px;
+  left: 50%; }
+
+.arrow-container-down {
+  bottom: 10px;
+  left: 50%; }
+
+.arrow-container-left {
+  top: 50%;
+  left: 10px; }
+
+.arrow-container-right {
+  top: 50%;
+  right: 10px; }

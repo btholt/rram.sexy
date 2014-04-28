@@ -6,11 +6,16 @@
   'use strict';
 
   var Arrow = React.createClass({displayName: 'Arrow',
+    handleClick: function(event) {
+
+    },
     render: function() {
       var arrowClasses = 'fa fa-inverse fa-stack-1x fa-arrow-' + this.props.direction;
+      var containerClasses = "arrow-container arrow-container-" + this.props.direction;
+      /* jshint ignore:start */
       return (
-        React.DOM.div( {className:"arrow-container"}, 
-          React.DOM.a( {className:"arrow-link", href:"#"}, 
+        React.DOM.div( {className:containerClasses}, 
+          React.DOM.a( {onClick:this.handleClick, className:"arrow-link", href:this.props.link}, 
             React.DOM.div( {className:"arrow-inner"}, 
               React.DOM.div( {className:"arrow-stack"}, 
                 React.DOM.span( {className:"fa-stack fa-lg"}, 
@@ -25,14 +30,32 @@
           )
         )
       );
+      /* jshint ignore:end */
     }
   });
 
+  var ArrowGroup = React.createClass({displayName: 'ArrowGroup',
+    render: function() {
+      /* jshint ignore:start */
+      return (
+        React.DOM.div(null, 
+          Arrow( {link:"#rg", direction:"up", title:"redditgifts"} ),
+          Arrow( {link:"#nyc", direction:"left", title:"NYC"} ),
+          Arrow( {link:"#slc", direction:"right", title:"SLC"} ),
+          Arrow( {link:"#office", direction:"down", title:"SLC Office"} )
+        )
+      );
+      /* jshint ignore:end */
+    }
+  });
+
+  console.log('arrow', document.getElementById('arrow'));
+
+  /* jshint ignore:start */
   React.renderComponent(
-    Arrow( {direction:"down", title:"rg Pets"} ),
+    ArrowGroup(null ),
     document.getElementById('arrow')
   );
+  /* jshint ignore:end */
 
 })();
-
-console.log('thing');

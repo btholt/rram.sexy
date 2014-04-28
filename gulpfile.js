@@ -3,6 +3,7 @@ var react = require('gulp-react');
 var sass = require('gulp-sass');
 var imagemin = require('gulp-imagemin');
 var newer = require('gulp-newer');
+var jshint = require('gulp-jshint');
 
 var paths = {
   jsx: 'jsx/**/*.jsx',
@@ -10,8 +11,15 @@ var paths = {
   scss: 'scss/**/*.scss',
   css: 'dist/css',
   imgRaw: 'img-raw/**/*.{png,jpg,gif}',
-  imgOptim: 'dist/img-optim'
-}
+  imgOptim: 'dist/img-optim',
+  gulpfile: 'gulpfile.js'
+};
+
+gulp.task('lint', function() {
+  return gulp.src([paths.jsx, paths.gulpfile])
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+});
 
 gulp.task('jsx', function() {
   return gulp.src(paths.jsx)
@@ -35,7 +43,7 @@ gulp.task('image', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.jsx, ['jsx']);
+  gulp.watch(paths.jsx, ['lint','jsx']);
   gulp.watch(paths.scss, ['scss']);
   gulp.watch(paths.img, ['image']);
 });
