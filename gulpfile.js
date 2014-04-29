@@ -4,6 +4,7 @@ var sass = require('gulp-sass');
 var imagemin = require('gulp-imagemin');
 var newer = require('gulp-newer');
 var jshint = require('gulp-jshint');
+var livereload = require('gulp-livereload');
 
 var paths = {
   jsx: 'jsx/**/*.jsx',
@@ -43,7 +44,14 @@ gulp.task('image', function () {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.jsx, ['lint','jsx']);
-  gulp.watch(paths.scss, ['scss']);
-  gulp.watch(paths.img, ['image']);
+  var server = livereload();
+  var lr = function(file) {
+    server.changed(file.path);
+  };
+  gulp.watch(paths.jsx, ['lint','jsx'])
+    .on('change', lr);
+  gulp.watch(paths.scss, ['scss'])
+    .on('change', lr);
+  gulp.watch(paths.img, ['image'])
+    .on('change', lr);
 });

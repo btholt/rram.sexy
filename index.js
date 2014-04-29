@@ -12,6 +12,7 @@ connect()
   .use('/css', connect.static(__dirname + '/dist/css'))
   .use('/img-optim', connect.static(__dirname + '/dist/img-optim'))
   .use('/', function(req, res){
+    console.log(req.originalUrl);
     res.end(html);
   })
   // .use(function(req, res){
