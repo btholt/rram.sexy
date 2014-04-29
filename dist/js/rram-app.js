@@ -17,6 +17,13 @@ window.RramApp = new (Backbone.Router.extend({
     home: new ArrowModel({ link:'#', title:'Home' })
   },
 
+  models: {
+    rg: new GalleryModel(),
+    office: new GalleryModel(),
+    nyc: new GalleryModel(),
+    slc: new GalleryModel(),
+  },
+
   initialize: function() {
     console.log('initial');
   },
@@ -39,22 +46,22 @@ window.RramApp = new (Backbone.Router.extend({
   rg: function() {
     console.log('rg');
     this.renderArrows(new ArrowGroupModel({down: this.arrows.home}));
-    this.translateToNewGallery();
+    this.translateToNewGallery(this.models.rg);
   },
   nyc: function() {
     console.log('nyc');
     this.renderArrows(new ArrowGroupModel({right: this.arrows.home}));
-    this.translateToNewGallery();
+    this.translateToNewGallery(this.models.nyc);
   },
   slc: function() {
     console.log('slc');
     this.renderArrows(new ArrowGroupModel({left: this.arrows.home}));
-    this.translateToNewGallery();
+    this.translateToNewGallery(this.models.slc);
   },
   office: function() {
     console.log('office');
     this.renderArrows(new ArrowGroupModel({up: this.arrows.home}));
-    this.translateToNewGallery();
+    this.translateToNewGallery(this.models.office);
   },
   start: function() {
     Backbone.history.start();
@@ -62,7 +69,7 @@ window.RramApp = new (Backbone.Router.extend({
   translateToNewGallery: function(model) {
     /* jshint ignore:start */
     React.renderComponent(
-      Gallery(null ),
+      Gallery( {model:model, hero:model.get('entries')[0]} ),
       document.getElementById('content')
     );
     /* jshint ignore:end */

@@ -9,6 +9,7 @@ var GalleryModel = Backbone.Model.extend({
       {title: 'Asset 5', thumbnail: "http://placekitten.com/g/300/300", type: "image", asset:'http://placekitten.com/g/1600/900'}
     ],
     title: 'Gallery',
+    background: "TODO",
     directions: {
       up: false,
       left: false,
