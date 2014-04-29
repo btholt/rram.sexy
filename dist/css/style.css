@@ -36,6 +36,11 @@ table {
 input[type='text'], input[type='number'], textarea {
   font-size: 16px; }
 
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
 @font-face {
   font-family: 'Oxygen';
   font-style: normal;
@@ -50,26 +55,36 @@ input[type='text'], input[type='number'], textarea {
 
 .hero-container {
   width: 80%;
-  max-width: 600px;
   margin: 0 auto;
   overflow: hidden;
   margin-bottom: 10px; }
 
 .hero-bg {
-  width: 100%;
+  width: 50%;
   height: 0;
-  padding-bottom: 56.25%;
+  padding-bottom: 28.125%;
   background-size: contain;
   background-position: center;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  float: left; }
+
+.hero-asset {
+  display: flex; }
 
 .hero-title {
   text-align: center;
   margin-bottom: 10px; }
 
+.hero-description {
+  float: left;
+  width: 50%;
+  line-height: 1.5;
+  padding: 10px;
+  background-color: rgba(225, 225, 225, 0.4); }
+
 .minor-container {
-  width: 19.2%;
-  margin-right: 0.8%;
+  width: 19%;
+  margin-right: 1.25%;
   float: left; }
   .minor-container:last-child {
     margin-right: 0; }
@@ -83,6 +98,7 @@ input[type='text'], input[type='number'], textarea {
   background-repeat: no-repeat; }
 
 .minors-container {
+  cursor: pointer;
   overflow: hidden;
   width: 80%; }
 

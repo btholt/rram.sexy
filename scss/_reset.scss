@@ -41,3 +41,11 @@ table {
 
 // Prevent iPhone/iPad from zooming onto text fields
 input[type='text'],input[type='number'],textarea {font-size:16px;}
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
