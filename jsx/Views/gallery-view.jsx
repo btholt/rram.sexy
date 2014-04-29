@@ -15,7 +15,13 @@ var Gallery = React.createClass({
         <GalleryHero hero={this.state.hero} />
         <div className="minors-container">
           {this.props.model.get('entries').map(function(item, index) {
-            var minorStyle = {'background-image' : 'url(' + item.thumbnail + ')'};
+            var minorStyle;
+            if(item.type === 'youtube') {
+              minorStyle = {'background-image' : 'url(http://img.youtube.com/vi/' + item.asset + '/hqdefault.jpg' + ')' }
+            }
+            else {
+              minorStyle = {'background-image' : 'url(' + item.thumbnail + ')'};
+            }
             return (
               <div data-index={index} onClick={_this.handleClick} className="js-minor-index minor-container">
                 <div style={minorStyle} className="minor-bg"></div>
@@ -30,16 +36,28 @@ var Gallery = React.createClass({
 });
 
 var GalleryHero = React.createClass({
+
   render: function() {
-    var bg = this.props.hero.asset;
-    var style = { 'background-image': 'url(' + bg + ')' };
+    var asset;
+    if (this.props.hero.type === 'image') {
+      var style = { 'background-image': 'url(' + this.props.hero.asset + ')' };
+      /* jshint ignore:start */
+      asset = <div style={style} className="hero-bg"></div>
+      /* jshint ignore:end */
+    }
+    else {
+      var src = "http://www.youtube-nocookie.com/embed/" + this.props.hero.asset;
+      /* jshint ignore:start */
+      asset = <div className="video-container"><iframe className="hero-video" src={src} frameborder="0" allowfullscreen></iframe></div>
+      /* jshint ignore:end */
+    }
     /* jshint ignore:start */
      return (
       <div className="hero-container">
         <h1 className="hero-title">{this.props.hero.title}</h1>
         <div className="hero-asset">
         <p className="hero-description">{this.props.hero.description}</p>
-          <div style={style} className="hero-bg"></div>
+          {asset}
         </div>
       </div>
       );
