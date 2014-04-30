@@ -5,10 +5,11 @@ var Arrow = React.createClass({
   render: function() {
     var arrowClasses = 'fa fa-inverse fa-stack-1x fa-arrow-' + this.props.direction;
     var containerClasses = "arrow-container arrow-container-" + this.props.direction;
+    var id ="arrow-" + this.props.direction;
     /* jshint ignore:start */
     return (
       <div className={containerClasses}>
-        <a onClick={this.handleClick} className="arrow-link" href={this.props.model.get('link')}>
+        <a id={id} onClick={this.handleClick} className="arrow-link" href={this.props.model.get('link')}>
           <div className="arrow-inner">
             <div className="arrow-stack">
               <span className="fa-stack fa-lg">

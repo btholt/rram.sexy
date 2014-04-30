@@ -28,6 +28,25 @@ window.RramApp = new (Backbone.Router.extend({
 
   initialize: function() {
     console.log('initial');
+
+    $('body').keyup(function(e) {
+      var link = false;
+      if(e.which === 37) {
+        link = $('#arrow-left').attr('href');
+      }
+      else if (e.which === 38) {
+        link = $('#arrow-up').attr('href');
+      }
+      else if (e.which === 39) {
+        link = $('#arrow-right').attr('href');
+      }
+      else if (e.which === 40) {
+        link = $('#arrow-down').attr('href');
+      }
+      if (link) {
+        window.location = link;
+      }
+    });
   },
   index: function() {
     console.log('index');

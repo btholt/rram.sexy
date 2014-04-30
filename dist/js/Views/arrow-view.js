@@ -6,10 +6,11 @@ var Arrow = React.createClass({displayName: 'Arrow',
   render: function() {
     var arrowClasses = 'fa fa-inverse fa-stack-1x fa-arrow-' + this.props.direction;
     var containerClasses = "arrow-container arrow-container-" + this.props.direction;
+    var id ="arrow-" + this.props.direction;
     /* jshint ignore:start */
     return (
       React.DOM.div( {className:containerClasses}, 
-        React.DOM.a( {onClick:this.handleClick, className:"arrow-link", href:this.props.model.get('link')}, 
+        React.DOM.a( {id:id, onClick:this.handleClick, className:"arrow-link", href:this.props.model.get('link')}, 
           React.DOM.div( {className:"arrow-inner"}, 
             React.DOM.div( {className:"arrow-stack"}, 
               React.DOM.span( {className:"fa-stack fa-lg"}, 
