@@ -4,6 +4,7 @@ var connect = require('connect'),
 
 var fs = require('fs');
 var html = fs.readFileSync(__dirname + '/dist/index.html');
+var json = fs.readFileSync(__dirname + '/dist/data.json');
 
 var port = 8080;
 
@@ -11,6 +12,12 @@ connect()
   .use('/js', connect.static(__dirname + '/dist/js'))
   .use('/css', connect.static(__dirname + '/dist/css'))
   .use('/img-optim', connect.static(__dirname + '/dist/img-optim'))
+  .use('/data.json', function(req, res){
+    console.log(req.originalUrl);
+    res.writeHead(200, {
+      'Content-Type': 'application/json' });
+    res.end(json);
+  })
   .use('/', function(req, res){
     console.log(req.originalUrl);
     res.end(html);

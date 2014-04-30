@@ -28,6 +28,21 @@ window.RramApp = new (Backbone.Router.extend({
   initialize: function() {
     console.log('initial');
 
+    $.get('/data.json', function(data) {
+      if (data.rg) {
+        this.models.rg.set(data.rg);
+      }
+      if (data.slc) {
+        this.models.rg.set(data.slc);
+      }
+      if (data.nyc) {
+        this.models.rg.set(data.nyc);
+      }
+      if (data.office) {
+        this.models.rg.set(data.office);
+      }
+    }.bind(this));
+
     $('body').keyup(function(e) {
       var link = false;
       if(e.which === 37) {
