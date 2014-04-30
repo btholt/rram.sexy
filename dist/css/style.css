@@ -131,6 +131,52 @@ input[type='text'], input[type='number'], textarea {
   align-items: center;
   align-content: center; }
 
+.js-transition {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out; }
+
+#content {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out; }
+  #content.js-right {
+    left: -100%; }
+  #content.js-left {
+    left: 100%; }
+  #content.js-down {
+    margin-bottom: 100%; }
+  #content.js-up {
+    margin-top: 100%; }
+
+#transition-down.off {
+  margin-top: 100%; }
+
+#transition-up.off {
+  margin-bottom: 100%; }
+
+#transition-right.off {
+  left: 100%; }
+
+#transition-left.off {
+  left: -100%; }
+
 html {
   height: 100%; }
 
@@ -150,7 +196,8 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  position: relative; }
+  position: relative;
+  background-color: #929FD3; }
 
 .home-h {
   width: 100%;

@@ -9,6 +9,8 @@ window.RramApp = new (Backbone.Router.extend({
     'rg' : 'rg'
   },
 
+  previousDirection: 'up',
+
   arrows: {
     rg: new ArrowModel({ link:'#rg', title:'redditgifts'}),
     nyc: new ArrowModel({ link:'#nyc', title:'NYC'}),
@@ -29,6 +31,8 @@ window.RramApp = new (Backbone.Router.extend({
   },
   index: function() {
     console.log('index');
+    $('.js-transition').addClass('off');
+    $('#content').removeClass('js-'+this.previousDirection);
     var arrowModels = new ArrowGroupModel({
       up: this.arrows.rg,
       left: this.arrows.nyc,
@@ -46,33 +50,38 @@ window.RramApp = new (Backbone.Router.extend({
   rg: function() {
     console.log('rg');
     this.renderArrows(new ArrowGroupModel({down: this.arrows.home}));
-    this.translateToNewGallery(this.models.rg);
+    this.translateToNewGallery(this.models.rg, 'up');
   },
   nyc: function() {
     console.log('nyc');
     this.renderArrows(new ArrowGroupModel({right: this.arrows.home}));
-    this.translateToNewGallery(this.models.nyc);
+    this.translateToNewGallery(this.models.nyc, 'left');
   },
   slc: function() {
     console.log('slc');
     this.renderArrows(new ArrowGroupModel({left: this.arrows.home}));
-    this.translateToNewGallery(this.models.slc);
+    this.translateToNewGallery(this.models.slc, 'right');
   },
   office: function() {
     console.log('office');
     this.renderArrows(new ArrowGroupModel({up: this.arrows.home}));
-    this.translateToNewGallery(this.models.office);
+    this.translateToNewGallery(this.models.office, 'down');
   },
   start: function() {
     Backbone.history.start();
   },
-  translateToNewGallery: function(model) {
+  translateToNewGallery: function(model, direction) {
+    this.previousDirection = direction;
+    console.log('direction', direction);
+
     /* jshint ignore:start */
     React.renderComponent(
       Gallery( {model:model, hero:model.get('entries')[0]} ),
-      document.getElementById('content')
+      document.getElementById('transition-' + direction)
     );
     /* jshint ignore:end */
+    $('#content').addClass('js-' + direction);
+    $('#transition-' + direction).removeClass('off');
   },
   renderArrows: function(arrowModels) {
 
